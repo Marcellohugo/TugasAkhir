@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Cashflowpoly.Api/Cashflowpoly.Api.csproj" />
+    <Project Path="src/Cashflowpoly.Ui/Cashflowpoly.Ui.csproj" />
+  </Folder>
+</Solution>
