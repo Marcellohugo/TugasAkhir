@@ -31,10 +31,10 @@ Sistem menyediakan dua komponen yang instruktur jalankan:
 2. Web MVC (dasbor) untuk tampilan analitika.
 
 Instruktur mengakses dasbor melalui browser:
-- URL Web: `http://localhost:<PORT_WEB>/sessions`
+- URL Web: `http://localhost:5203/sessions`
 
 Instruktur menguji API melalui Swagger:
-- URL Swagger: `http://localhost:<PORT_API>/swagger`
+- URL Swagger: `http://localhost:5041/swagger`
 
 Catatan:
 - URL dapat berbeda tergantung konfigurasi `launchSettings.json`.

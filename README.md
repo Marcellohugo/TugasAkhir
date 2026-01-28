@@ -1,4 +1,4 @@
-# Cashflowpoly Dashboard & Manajemen *Ruleset*
+ï»¿# Cashflowpoly Dashboard & Manajemen *Ruleset*
 
 Repositori ini memuat sistem informasi yang merekam aktivitas gim papan Cashflowpoly sebagai rangkaian *event*, memvalidasi data masuk, menyimpan data secara konsisten di PostgreSQL, lalu mengolahnya menjadi metrik literasi finansial dan capaian misi yang tampil pada dasbor web. Sistem juga menyediakan modul manajemen *ruleset* berbasis konfigurasi dinamis agar instruktur mengubah parameter permainan tanpa mengubah kode.
 
@@ -54,25 +54,31 @@ UI tidak mengakses database secara langsung. UI membaca data dari REST API agar 
 | 9 | Postman | Uji fungsional *endpoint* API (black-box) |
 | 10 | Tailwind CSS | Styling UI dasbor MVC |
 
-## Struktur repositori ()
-Sesuaikan nama folder jika repositori kamu memakai struktur berbeda.
+## Struktur repositori
 
 ```
 .
++- .env
++- .github/
++- Cashflowpoly.slnx
++- Img/
++- README.md
 +- docker-compose.yml
-+- db/
-¦  +- init.sql
++- database/
+Â¦  +- 00_create_schema.sql
 +- docs/
-¦  +- 00-01-panduan-setup-lingkungan-dan-menjalankan-sistem.md
-¦  +- 00-02-manual-pengguna-dan-skenario-operasional.md
-¦  +- 01-01-spesifikasi-kebutuhan-sistem.md
-¦  +- 01-02-spesifikasi-event-dan-kontrak-api.md
-¦  +- 01-03-spesifikasi-ruleset-dan-validasi.md
-¦  +- 02-01-rancangan-model-data-dan-basis-data.md
-¦  +- 02-02-definisi-metrik-dan-agregasi.md
-¦  +- 02-03-rancangan-dashboard-analitika-mvc.md
-¦  +- 02-04-rencana-implementasi-dan-struktur-solution-dotnet.md
-¦  +- 02-05-spesifikasi-ui-mvc-dan-rancangan-viewmodel.md
+Â¦  +- 00-01-panduan-setup-lingkungan-dan-menjalankan-sistem.md
+Â¦  +- 00-02-manual-pengguna-dan-skenario-operasional.md
+Â¦  +- 01-01-spesifikasi-kebutuhan-sistem.md
+Â¦  +- 01-02-spesifikasi-event-dan-kontrak-api.md
+Â¦  +- 01-03-spesifikasi-ruleset-dan-validasi.md
+Â¦  +- 02-01-rancangan-model-data-dan-basis-data.md
+Â¦  +- 02-02-definisi-metrik-dan-agregasi.md
+Â¦  +- 02-03-rancangan-dashboard-analitika-mvc.md
+Â¦  +- 02-04-rencana-implementasi-dan-struktur-solution-dotnet.md
+Â¦  +- 02-05-spesifikasi-ui-mvc-dan-rancangan-viewmodel.md
+Â¦  +- 03-01-rencana-pengujian-fungsional-dan-validasi.md
+Â¦  +- 03-02-laporan-hasil-pengujian.md
 +- src/
    +- Cashflowpoly.Api/
    +- Cashflowpoly.Ui/
@@ -88,17 +94,17 @@ docker compose up -d --build
 
 Akses:
 - API + Swagger: `http://localhost:5041/swagger`
-- UI MVC: `http://localhost:5040`
+- UI MVC: `http://localhost:5203`
 
 ### 2) Sambungkan DBeaver ke PostgreSQL
 Gunakan konfigurasi berikut:
 - Host: `localhost`
 - Port: `5432`
-- Database: `cashflowpoly_db`
-- User: `cashflowpoly_user`
-- Password: `cashflowpoly_pass`
+- Database: `cashflowpoly`
+- User: `cashflowpoly`
+- Password: `cashflowpoly`
 
-DBeaver menampilkan tabel pada schema `public` setelah PostgreSQL menjalankan `db/init.sql` saat volume database masih kosong.
+DBeaver menampilkan tabel pada schema `public` setelah PostgreSQL menjalankan `database/00_create_schema.sql` saat volume database masih kosong.
 
 ### 3) Hentikan layanan
 ```bash
@@ -112,7 +118,7 @@ docker compose down -v
 
 ## Menjalankan lokal tanpa Docker
 ### 1) Siapkan PostgreSQL
-Buat database dan user, lalu jalankan skrip DDL dari `db/init.sql`.
+Buat database dan user, lalu jalankan skrip DDL dari `database/00_create_schema.sql`.
 
 ### 2) Atur konfigurasi API dan UI
 API memakai koneksi database dari `ConnectionStrings:Default`.
@@ -120,7 +126,7 @@ UI memakai base URL API dari `ApiBaseUrl`.
 
 Contoh lokal:
 - API: `http://localhost:5041`
-- UI: `http://localhost:5040`
+- UI: `http://localhost:5203`
 
 ### 3) Jalankan API
 ```bash
@@ -157,3 +163,4 @@ Dokumen kunci:
 
 ## Lisensi
 Tentukan lisensi yang kamu pakai untuk repositori ini.
+

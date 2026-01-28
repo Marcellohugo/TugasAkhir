@@ -12,7 +12,7 @@
 ## 1. Tujuan
 Dokumen ini menyajikan rekap hasil uji fungsional (*black-box*), uji integrasi alur event, dan validasi UI dasbor. Dokumen ini juga merangkum temuan (*bug*), modul yang paling sering bermasalah, dan status perbaikannya.
 
-Dokumen ini kamu isi setelah menjalankan rencana uji pada dokumen 07.
+Dokumen ini kamu isi setelah menjalankan rencana uji pada dokumen 01.
 
 ---
 
@@ -21,7 +21,7 @@ Dokumen ini kamu isi setelah menjalankan rencana uji pada dokumen 07.
 - Tanggal pengujian: (isi)
 - Versi aplikasi (git commit/tag): (isi)
 - Penguji: (isi)
-- DB: `cashflowpoly_db` (isi jika berbeda)
+- DB: `cashflowpoly`
 - URL API: (isi)
 - URL Web: (isi)
 

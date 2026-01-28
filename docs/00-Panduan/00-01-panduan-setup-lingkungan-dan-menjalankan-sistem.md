@@ -1,4 +1,4 @@
-# Panduan Setup Lingkungan dan Menjalankan Sistem (Windows 11 + VS Code)  
+﻿# Panduan Setup Lingkungan dan Menjalankan Sistem (Windows 11 + VS Code)  
 ## RESTful API + ASP.NET Core MVC (Razor Views) untuk Cashflowpoly
 
 ### Dokumen
@@ -53,12 +53,12 @@ Jika output belum menampilkan .NET 10, sistem membutuhkan instalasi .NET 10 SDK.
 
 ## 4. Instalasi PostgreSQL dan Verifikasi
 ### 4.1 Buat database dan user
-Sistem membuat database dan user terpisah untuk proyek.
+Sistem memakai database dan user yang sama dengan `.env`.
 
 Contoh (psql):
 ```sql
-create user cashflowpoly_user with password 'cashflowpoly_pass';
-create database cashflowpoly_db owner cashflowpoly_user;
+create user cashflowpoly with password 'cashflowpoly';
+create database cashflowpoly owner cashflowpoly;
 ```
 
 ### 4.2 Aktifkan extension UUID
@@ -77,11 +77,11 @@ Sistem menjalankan langkah berikut pada folder kerja.
 
 ### 5.1 Buat folder repo
 ```bash
-mkdir cashflowpoly-dashboard
-cd cashflowpoly-dashboard
+mkdir cashflowpoly-analytics-platform
+cd cashflowpoly-analytics-platform
 ```
 
-### 5.2 Inisiasi git (opsional)
+### 5.2 Inisiasi git
 ```bash
 git init
 ```
@@ -89,8 +89,13 @@ git init
 ### 5.3 Struktur solution dan proyek
 Struktur proyek yang dipakai:
 ```
-cashflowpoly-dashboard/
+cashflowpoly-analytics-platform/
+  .env
+  .github/
   Cashflowpoly.slnx
+  Img/
+  docker-compose.yml
+  README.md
   docs/
   database/
   src/
@@ -119,7 +124,7 @@ Contoh `src/Cashflowpoly.Api/appsettings.Development.json`:
 ```json
 {
   "ConnectionStrings": {
-    "Default": "Host=localhost;Port=5432;Database=cashflowpoly_db;Username=cashflowpoly_user;Password=cashflowpoly_pass"
+    "Default": "Host=localhost;Port=5432;Database=cashflowpoly;Username=cashflowpoly;Password=cashflowpoly"
   }
 }
 ```
@@ -137,7 +142,7 @@ Sistem tidak memakai EF Core. Skema dibuat dengan skrip SQL yang disediakan.
 
 ### 8.2 Jalankan skrip skema
 1. Buka file `database/00_create_schema.sql`.
-2. Jalankan seluruh script di DBeaver pada database `cashflowpoly_db`.
+2. Jalankan seluruh script di DBeaver pada database `cashflowpoly`.
 3. Pastikan tabel dan indeks terbentuk tanpa error.
 
 Catatan:
@@ -154,10 +159,8 @@ dotnet run --project Cashflowpoly.Api
 
 ### 9.2 Akses Swagger
 Buka Chrome:
-- `https://localhost:<PORT>/swagger`
-
-Jika port memakai HTTP:
-- `http://localhost:<PORT>/swagger`
+- `https://localhost:7041/swagger` (HTTPS)
+- `http://localhost:5041/swagger` (HTTP)
 
 Jika `weatherforecast` bisa dibuka tetapi swagger gagal, penyebab yang paling sering:
 1. middleware swagger belum diaktifkan untuk environment `Development`,
@@ -183,13 +186,14 @@ dotnet run --project Cashflowpoly.Ui
 Sistem menaruh base URL API di `Cashflowpoly.Ui/appsettings.Development.json`:
 ```json
 {
-  "ApiBaseUrl": "https://localhost:7001"
+  "ApiBaseUrl": "http://localhost:5041"
 }
 ```
 
 ### 10.3 Uji halaman
 Buka:
-- `https://localhost:<PORT_WEB>/sessions`
+- `https://localhost:7203/sessions` (HTTPS)
+- `http://localhost:5203/sessions` (HTTP)
 
 Jika halaman masih kosong, itu normal jika endpoint `/api/sessions` belum kamu implementasikan.
 
@@ -268,3 +272,6 @@ Setup selesai jika:
 3. Swagger UI bisa kamu akses,
 4. endpoint sample bisa kamu panggil,
 5. MVC bisa jalan dan menampilkan halaman.
+
+
+

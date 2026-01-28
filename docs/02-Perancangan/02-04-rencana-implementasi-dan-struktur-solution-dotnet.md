@@ -1,4 +1,4 @@
-# Rencana Implementasi dan Struktur *Solution* .NET  
+﻿# Rencana Implementasi dan Struktur *Solution* .NET  
 ## RESTful API + ASP.NET Core MVC (Razor Views) untuk Cashflowpoly
 
 ### Dokumen
@@ -42,19 +42,28 @@ Kampus meminta MVC untuk UI. Sistem tetap memenuhi itu karena:
 Sistem memakai monorepo satu repositori dengan satu *solution*.
 
 ```
-cashflowpoly-dashboard/
-  .editorconfig
+cashflowpoly-analytics-platform/
+  .env
+  .github/
   .gitignore
-  README.md
-  docs/
-    02-spesifikasi-event-dan-kontrak-api.md
-    03-spesifikasi-ruleset-dan-validasi.md
-    04-rancangan-model-data-dan-basis-data.md
-    05-definisi-metrik-dan-agregasi.md
-    06-rancangan-dashboard-analitika-mvc.md
-    07-rencana-pengujian-fungsional-dan-validasi.md
-    08-rencana-implementasi-dan-struktur-solution-dotnet.md
   Cashflowpoly.slnx
+  Img/
+  docker-compose.yml
+  README.md
+  database/
+  docs/
+    00-01-panduan-setup-lingkungan-dan-menjalankan-sistem.md
+    00-02-manual-pengguna-dan-skenario-operasional.md
+    01-01-spesifikasi-kebutuhan-sistem.md
+    01-02-spesifikasi-event-dan-kontrak-api.md
+    01-03-spesifikasi-ruleset-dan-validasi.md
+    02-01-rancangan-model-data-dan-basis-data.md
+    02-02-definisi-metrik-dan-agregasi.md
+    02-03-rancangan-dashboard-analitika-mvc.md
+    02-04-rencana-implementasi-dan-struktur-solution-dotnet.md
+    02-05-spesifikasi-ui-mvc-dan-rancangan-viewmodel.md
+    03-01-rencana-pengujian-fungsional-dan-validasi.md
+    03-02-laporan-hasil-pengujian.md
   src/
     Cashflowpoly.Api/
     Cashflowpoly.Ui/
@@ -133,18 +142,22 @@ Catatan: kamu bisa mulai tanpa FluentValidation agar implementasi cepat, lalu ta
 ## 7. Konfigurasi *Solution* di VS Code
 ### 7.1 Struktur run
 Sistem menjalankan API dan UI secara paralel:
-- API: `https://localhost:7xxx` atau `http://localhost:5xxx`
-- UI: `https://localhost:8xxx` atau `http://localhost:6xxx`
+- API: `https://localhost:7041` atau `http://localhost:5041`
+- UI: `https://localhost:7203` atau `http://localhost:5203`
 
 Sistem mengatur base URL API untuk UI melalui `Cashflowpoly.Ui/appsettings.json`:
 ```json
 {
-  "ApiBaseUrl": "https://localhost:7001"
+  "ApiBaseUrl": "http://localhost:5041"
 }
 ```
 
 ### 7.2 Konvensi port
-Sistem mengunci port agar dokumentasi dan Postman stabil. Kamu bisa set port via `launchSettings.json` atau `--urls`.
+Sistem mengunci port via file `.env`:
+- API HTTP: `5041`
+- API HTTPS: `7041`
+- UI HTTP: `5203`
+- UI HTTPS: `7203`
 
 ---
 
@@ -258,4 +271,7 @@ Jika kamu butuh target mingguan:
 - Minggu 2: Tahap C–D
 - Minggu 3: Tahap E–F
 - Minggu 4: Tahap G–H + pengujian (dokumen 07)
+
+
+
 
