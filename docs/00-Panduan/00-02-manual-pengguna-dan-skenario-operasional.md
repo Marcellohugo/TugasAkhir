@@ -4,8 +4,8 @@
 ### Dokumen
 - Nama dokumen: Manual Pengguna dan Skenario Operasional
 - Versi: 1.0
-- Tanggal: (isi tanggal)
-- Penyusun: (isi nama)
+- Tanggal: 28 Januari 2026
+- Penyusun: Marco Marcello Hugo
 
 ---
 
@@ -16,7 +16,7 @@ Dokumen ini menjelaskan cara penggunaan sistem dari sudut pandang pengguna, teru
 
 ## 2. Peran Pengguna
 ### 2.1 Instruktur
-Instruktur mengelola sesi, memilih *ruleset*, memantau ringkasan analitika, dan membaca tren hasil pembelajaran.
+Instruktur mengelola sesi, memilih *ruleset*, memantau performa pembelajaran dan performa misi, serta membaca tren hasil pembelajaran.
 
 ### 2.2 Pemain
 Pemain melihat performa diri dan histori transaksi diri.
@@ -136,7 +136,7 @@ Instruktur menyimpan:
 
 ## 9. Skenario 5 — Memantau Analitika pada Detail Sesi
 ### Tujuan
-Instruktur menilai performa agregat sesi dan per pemain.
+Instruktur menilai performa pembelajaran dan performa misi pada level sesi (agregat) dan per pemain.
 
 ### Langkah
 1. Buka Web MVC.
@@ -148,7 +148,9 @@ Instruktur menilai performa agregat sesi dan per pemain.
    - net cashflow,
    - jumlah event,
    - jumlah pelanggaran aturan (jika ada).
-5. Lihat tabel pemain untuk ringkasan per pemain.
+5. Lihat indikator performa pembelajaran dan performa misi (agregat).
+6. Lihat tabel pemain untuk ringkasan per pemain.
+7. Gunakan filter/pengelompokan berdasarkan *ruleset* bila tersedia pada UI.
 
 ### Interpretasi cepat
 - Pemasukan tinggi dan pengeluaran tinggi perlu dilihat bersama net cashflow.
@@ -159,13 +161,14 @@ Instruktur menilai performa agregat sesi dan per pemain.
 
 ## 10. Skenario 6 — Membaca Detail Pemain dan Histori Transaksi
 ### Tujuan
-Instruktur atau pemain menilai perilaku pemain berdasarkan transaksi dan metrik.
+Instruktur atau pemain menilai performa pembelajaran, performa misi, dan perilaku pemain berdasarkan transaksi dan metrik.
 
 ### Langkah
 1. Dari detail sesi, pilih pemain.
 2. Buka halaman detail pemain.
 3. Lihat:
    - metrik pemain (kartu/daftar),
+   - indikator performa pembelajaran dan performa misi pemain,
    - tabel histori transaksi.
 
 ### Cara membaca tabel transaksi

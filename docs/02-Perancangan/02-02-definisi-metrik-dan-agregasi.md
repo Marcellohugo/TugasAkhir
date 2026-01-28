@@ -4,8 +4,8 @@
 ### Dokumen
 - Nama dokumen: Definisi Metrik dan Aturan Agregasi
 - Versi: 1.0
-- Tanggal: (isi tanggal)
-- Penyusun: (isi nama)
+- Tanggal: 28 Januari 2026
+- Penyusun: Marco Marcello Hugo
 
 ---
 

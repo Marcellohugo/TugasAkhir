@@ -4,8 +4,8 @@
 ### Dokumen
 - Nama dokumen: Rencana Pengujian Fungsional dan Validasi
 - Versi: 1.0
-- Tanggal: (isi tanggal)
-- Penyusun: (isi nama)
+- Tanggal: 28 Januari 2026
+- Penyusun: Marco Marcello Hugo
 
 ---
 
@@ -39,7 +39,7 @@ Sistem menguji tiga area.
 ### 3.2 Konfigurasi dasar
 Sistem menyiapkan:
 1. database kosong,
-2. migrasi EF Core berjalan,
+2. skrip skema database dijalankan melalui DBeaver,
 3. seed data minimal:
    - 1 *ruleset* default + 1 `ruleset_version` default,
    - 1 sesi contoh (opsional).

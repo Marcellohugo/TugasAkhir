@@ -4,8 +4,8 @@
 ### Dokumen
 - Nama dokumen: Rancangan Model Data dan Basis Data
 - Versi: 1.0
-- Tanggal: (isi tanggal)
-- Penyusun: (isi nama)
+- Tanggal: 28 Januari 2026
+- Penyusun: Marco Marcello Hugo
 
 ---
 
@@ -16,7 +16,7 @@ Dokumen ini mendefinisikan model data dan rancangan skema PostgreSQL untuk:
 3. menyimpan event terurut sebagai sumber histori,
 4. menyajikan data proyeksi dan agregasi metrik untuk dasbor.
 
-Dokumen ini menjadi acuan implementasi EF Core (*code-first* atau *migrations-first*) dan acuan pembuatan indeks untuk kinerja query analitika.
+Dokumen ini menjadi acuan implementasi skema PostgreSQL berbasis skrip SQL (tanpa ORM) dan acuan pembuatan indeks untuk kinerja query analitika.
 
 ---
 
@@ -440,19 +440,14 @@ Sistem dapat menambah *materialized view* bila query agregat tumbuh kompleks.
 
 ---
 
-## 9. Strategi Migrasi dan Implementasi EF Core
-### 9.1 Rekomendasi paket
-Sistem memakai:
-- `Npgsql.EntityFrameworkCore.PostgreSQL`
-- `Microsoft.EntityFrameworkCore.Design`
-
-### 9.2 Konvensi migrasi
-Sistem membuat migrasi per perubahan skema:
+## 9. Strategi Perubahan Skema (Tanpa ORM)
+### 9.1 Konvensi perubahan skema
+Sistem mengelola perubahan skema dengan skrip SQL terpisah:
 1. Sistem tambah tabel inti terlebih dahulu.
 2. Sistem tambah indeks setelah tabel ada.
 3. Sistem tambah constraint setelah data aman.
 
-### 9.3 Seed data minimum
+### 9.2 Seed data minimum
 Sistem dapat menanam data awal berikut pada lingkungan pengembangan:
 - satu ruleset default,
 - satu ruleset_version default,
@@ -465,4 +460,4 @@ Sistem siap masuk implementasi basis data jika:
 1. skema tabel inti berjalan pada PostgreSQL tanpa error,
 2. indeks utama terbentuk (`events`, `metric_snapshots`, `event_cashflow_projections`),
 3. constraint idempotensi dan urutan event aktif,
-4. migrasi EF Core menghasilkan struktur identik dengan dokumen ini.
+4. skrip SQL menghasilkan struktur identik dengan dokumen ini.

@@ -4,29 +4,32 @@
 ### Dokumen
 - Nama dokumen: Panduan Setup Lingkungan dan Menjalankan Sistem
 - Versi: 1.0
-- Tanggal: (isi tanggal)
-- Penyusun: (isi nama)
+- Tanggal: 28 Januari 2026
+- Penyusun: Marco Marcello Hugo
 
 ---
 
 ## 1. Tujuan
-Dokumen ini memandu setup lingkungan pengembangan dan pengujian pada Windows 11 Home, termasuk instalasi perangkat lunak, konfigurasi PostgreSQL, pengaturan *appsettings*, menjalankan migrasi EF Core, menjalankan REST API dan UI MVC, serta langkah troubleshooting yang paling sering terjadi.
+Dokumen ini memandu setup lingkungan pengembangan dan pengujian pada Windows 11 Home, termasuk instalasi perangkat lunak, konfigurasi PostgreSQL, pengaturan *appsettings*, menjalankan skrip skema database dengan DBeaver, menjalankan REST API dan UI MVC, serta langkah troubleshooting yang paling sering terjadi.
 
 ---
 
 ## 2. Perangkat Lunak yang Dibutuhkan
 Sistem membutuhkan komponen berikut pada mesin pengembang.
 
-| No | Perangkat Lunak | Fungsi |
+| No | Perangkat Lunak | Fungsi Penggunaan |
 |---:|---|---|
-| 1 | Windows 11 Home | Sistem operasi untuk lingkungan kerja pengembangan dan pengujian |
-| 2 | Visual Studio Code | IDE untuk menulis kode, menjalankan *debug*, dan mengelola proyek |
-| 3 | .NET 10 SDK | Runtime dan toolchain *build* untuk REST API dan MVC |
-| 4 | PostgreSQL | DBMS untuk menyimpan sesi, event, ruleset, proyeksi, dan metrik |
-| 5 | pgAdmin atau psql | Alat administrasi dan eksekusi query PostgreSQL |
-| 6 | Google Chrome | Pengujian antarmuka MVC dan akses Swagger UI |
-| 7 | Swagger UI (Swashbuckle) | Dokumentasi dan pengujian endpoint API dari browser |
-| 8 | Postman | Pengujian endpoint API dan skenario uji *black-box* |
+| 1 | Windows 11 Home | Menjalankan lingkungan kerja pengembangan dan pengujian sistem |
+| 2 | Visual Studio Code | Menulis kode, menjalankan perintah terminal, dan mengelola proyek .NET |
+| 3 | Google Chrome | Menguji antarmuka web, mengakses Swagger UI, dan memverifikasi tampilan dasbor |
+| 4 | ASP.NET Core 10 | Mengembangkan layanan RESTful API dan aplikasi web MVC |
+| 5 | ASP.NET Core MVC (Razor Views) | Membangun antarmuka web untuk dasbor analitika dan manajemen ruleset |
+| 6 | PostgreSQL | Menyimpan data sesi, pemain, ruleset, event, proyeksi cashflow, metrik, dan log validasi |
+| 7 | Docker Desktop | Menjalankan PostgreSQL, API, dan UI dalam container untuk deployment dan uji integrasi |
+| 8 | DBeaver | Mengelola basis data PostgreSQL: menjalankan DDL, melihat tabel, query data, dan memeriksa hasil pengujian |
+| 9 | Swagger (Swashbuckle) | Mendokumentasikan dan menguji endpoint REST API secara interaktif melalui OpenAPI/Swagger UI |
+| 10 | Postman | Melakukan pengujian fungsional endpoint REST API dengan skenario *black-box* |
+| 11 | Tailwind CSS | Mengatur styling antarmuka dasbor agar konsisten dan responsif |
 
 Catatan:
 - Sistem memasang Swagger melalui paket NuGet pada proyek API, bukan instalasi terpisah.
@@ -65,7 +68,7 @@ create extension if not exists "uuid-ossp";
 ```
 
 Catatan:
-- EF Core dapat menghasilkan UUID dari aplikasi tanpa extension, namun extension membantu jika kamu memakai `uuid_generate_v4()` pada DB.
+- Extension membantu jika kamu memakai `uuid_generate_v4()` pada DB.
 
 ---
 
@@ -125,13 +128,7 @@ Catatan:
 ---
 
 ## 6. Tambah Paket NuGet Inti
-### 6.1 Proyek Infrastructure (EF Core + PostgreSQL)
-```bash
-dotnet add Cashflowpoly.Infrastructure/Cashflowpoly.Infrastructure.csproj package Npgsql.EntityFrameworkCore.PostgreSQL
-dotnet add Cashflowpoly.Infrastructure/Cashflowpoly.Infrastructure.csproj package Microsoft.EntityFrameworkCore.Design
-```
-
-### 6.2 Proyek API (Swagger)
+### 6.1 Proyek API (Swagger)
 Jika template webapi belum menyertakan Swagger, pasang:
 ```bash
 dotnet add Cashflowpoly.Api/Cashflowpoly.Api.csproj package Swashbuckle.AspNetCore
@@ -155,33 +152,20 @@ Jika kamu menjalankan API pada port tertentu, kamu dapat mengunci URL pada `Prop
 
 ---
 
-## 8. Setup EF Core Tooling dan Migrasi
-### 8.1 Pasang ef tool (jika asumsi belum ada)
-Jalankan:
-```bash
-dotnet tool install --global dotnet-ef
-dotnet ef --version
-```
+## 8. Setup Skema Database (DBeaver)
+Sistem tidak memakai EF Core. Skema dibuat dengan skrip SQL yang disediakan.
 
-### 8.2 Pastikan API memakai DbContext dari Infrastructure
-Sistem menempatkan `AppDbContext` pada `Cashflowpoly.Infrastructure` dan mendaftarkannya pada API lewat DI.
+### 8.1 Buka koneksi PostgreSQL
+1. Jalankan DBeaver.
+2. Buat koneksi baru ke PostgreSQL (host, port, database, user, password).
 
-Konsep:
-- Infrastructure: definisikan DbContext.
-- API: panggil `services.AddDbContext<AppDbContext>(...)` dengan connection string.
+### 8.2 Jalankan skrip skema
+1. Buka file `database/00_create_schema.sql`.
+2. Jalankan seluruh script di DBeaver pada database `cashflowpoly_db`.
+3. Pastikan tabel dan indeks terbentuk tanpa error.
 
-### 8.3 Buat migrasi pertama
-Jalankan dari folder `src`:
-```bash
-dotnet ef migrations add InitialCreate -p Cashflowpoly.Infrastructure -s Cashflowpoly.Api -o Persistence/Migrations
-```
-
-### 8.4 Terapkan migrasi ke database
-```bash
-dotnet ef database update -p Cashflowpoly.Infrastructure -s Cashflowpoly.Api
-```
-
-Jika berhasil, PostgreSQL memiliki tabel hasil migrasi.
+Catatan:
+- Jika extension `uuid-ossp` belum aktif, jalankan perintah pada bagian 4.2 sebelum menjalankan script.
 
 ---
 
@@ -281,18 +265,7 @@ Langkah cek:
 2. uji connection string pada API,
 3. cek log output API.
 
-### 13.2 `dotnet ef` gagal menemukan DbContext
-Penyebab umum:
-- proyek startup (`-s`) salah,
-- DbContext tidak terdaftar atau tidak punya konstruktor yang benar,
-- dependency Infrastructure belum show.
-
-Solusi:
-- pastikan command memakai `-p Cashflowpoly.Infrastructure -s Cashflowpoly.Api`,
-- pastikan API mereferensikan Infrastructure,
-- pastikan `AppDbContext` ada di namespace yang benar.
-
-### 13.3 Swagger tidak bisa dibuka
+### 13.2 Swagger tidak bisa dibuka
 Penyebab umum:
 - `app.UseSwagger()` atau `app.UseSwaggerUI()` belum dipanggil,
 - environment bukan Development,
@@ -303,7 +276,7 @@ Solusi:
 - cek URL listen pada console,
 - akses `/swagger`.
 
-### 13.4 CORS error saat Web memanggil API
+### 13.3 CORS error saat Web memanggil API
 Jika Web berjalan pada origin berbeda dan memanggil API via browser, kamu bisa:
 - aktifkan CORS pada API untuk origin Web, atau
 - jalankan Web sebagai server-side MVC yang memanggil API dari server (bukan dari JS browser).
@@ -315,7 +288,7 @@ Dokumen rancangan UI memakai pendekatan server-side call via `HttpClient`, sehin
 ## 14. Checklist Setup Berhasil
 Setup selesai jika:
 1. `dotnet build` sukses untuk solution,
-2. migrasi EF Core sukses dan tabel terbentuk,
+2. skrip `database/00_create_schema.sql` berhasil dan tabel terbentuk,
 3. Swagger UI bisa kamu akses,
 4. endpoint sample bisa kamu panggil,
 5. MVC bisa jalan dan menampilkan halaman.

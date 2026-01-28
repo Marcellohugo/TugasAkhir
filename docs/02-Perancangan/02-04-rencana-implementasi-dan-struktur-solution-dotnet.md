@@ -4,8 +4,8 @@
 ### Dokumen
 - Nama dokumen: Rencana Implementasi dan Struktur *Solution* .NET
 - Versi: 1.0
-- Tanggal: (isi tanggal)
-- Penyusun: (isi nama)
+- Tanggal: 28 Januari 2026
+- Penyusun: Marco Marcello Hugo
 
 ---
 
@@ -27,10 +27,10 @@ Sistem memakai pola berlapis (*layered architecture*) yang memisahkan:
 1. API (HTTP boundary),
 2. aplikasi (*use case*),
 3. domain (aturan bisnis),
-4. infrastruktur (EF Core, PostgreSQL, logging).
+4. infrastruktur (akses database PostgreSQL, logging).
 
 Pola ini memenuhi karakter “*clean architecture*” pada level praktis jika:
-- domain tidak bergantung pada EF Core,
+- domain tidak bergantung pada akses database,
 - aplikasi tidak bergantung pada ASP.NET MVC,
 - infrastruktur bergantung ke domain dan aplikasi, bukan sebaliknya.
 
@@ -88,7 +88,7 @@ Catatan:
 - aturan validasi domain tingkat tinggi (batasan urutan, batasan kepemilikan) sebagai fungsi murni bila memungkinkan
 
 **Larangan:**
-- tidak boleh referensi EF Core, ASP.NET, `HttpContext`, atau JSON serializer khusus.
+- tidak boleh referensi akses database, ASP.NET, `HttpContext`, atau JSON serializer khusus.
 
 ### 4.2 `Cashflowpoly.Application`
 **Tanggung jawab:**
@@ -111,11 +111,11 @@ Catatan:
 
 ### 4.3 `Cashflowpoly.Infrastructure`
 **Tanggung jawab:**
-- EF Core DbContext dan konfigurasi entitas
+- akses database berbasis SQL (tanpa ORM)
 - implementasi repository
-- migrasi database
+- skrip dan perubahan skema database
 - implementasi hashing, time, id generator (bila perlu)
-- implementasi query analitika berbasis SQL/EF
+- implementasi query analitika berbasis SQL
 - implementasi proyeksi arus kas
 
 **Dependensi:**
@@ -194,9 +194,7 @@ Cashflowpoly.Application/
 ```
 Cashflowpoly.Infrastructure/
   Persistence/
-    AppDbContext.cs
-    Configurations/
-    Migrations/
+    Sql/
   Repositories/
   Analytics/
   Projections/
@@ -231,8 +229,7 @@ Cashflowpoly.Web/
 - `FluentValidation.AspNetCore` (opsional, kalau kamu mau validasi yang rapi)
 
 ### 6.2 Infrastructure
-- `Npgsql.EntityFrameworkCore.PostgreSQL`
-- `Microsoft.EntityFrameworkCore.Design`
+- Paket akses PostgreSQL sesuai implementasi (mis. `Npgsql`)
 
 ### 6.3 Web (MVC)
 - `Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation` (opsional, membantu saat dev)
@@ -272,13 +269,9 @@ Output:
 - swagger API bisa terbuka,
 - halaman Web bisa terbuka.
 
-### Tahap B — Database dan migrasi
-1. Buat `AppDbContext` + entitas EF Core untuk tabel inti:
-   - players, sessions, session_players,
-   - rulesets, ruleset_versions, session_ruleset_activations,
-   - events,
-   - event_cashflow_projections, metric_snapshots, validation_logs (opsional).
-2. Buat migrasi dan jalankan ke PostgreSQL.
+### Tahap B — Database dan skema SQL
+1. Jalankan skrip `database/00_create_schema.sql` pada PostgreSQL (mis. lewat DBeaver).
+2. Pastikan semua tabel dan indeks terbentuk sesuai dokumen 04.
 
 Output:
 - skema terbentuk sesuai dokumen 04.

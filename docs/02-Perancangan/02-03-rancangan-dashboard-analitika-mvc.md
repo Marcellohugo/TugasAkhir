@@ -4,8 +4,8 @@
 ### Dokumen
 - Nama dokumen: Rancangan *Dashboard* Analitika (MVC)
 - Versi: 1.0
-- Tanggal: (isi tanggal)
-- Penyusun: (isi nama)
+- Tanggal: 28 Januari 2026
+- Penyusun: Marco Marcello Hugo
 
 ---
 

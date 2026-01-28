@@ -4,8 +4,8 @@
 ### Dokumen
 - Nama dokumen: Analisis Kebutuhan Sistem
 - Versi: 1.0
-- Tanggal: (isi tanggal)
-- Penyusun: (isi nama)
+- Tanggal: 28 Januari 2026
+- Penyusun: Marco Marcello Hugo
 
 ---
 
@@ -68,14 +68,14 @@ Sistem melibatkan dua aktor:
 Instruktur membutuhkan:
 1. Fitur untuk membuat, memperbarui, menghapus, dan mengaktifkan *ruleset*.
 2. Fitur untuk memulai dan mengakhiri sesi permainan.
-3. Fitur untuk memantau metrik agregat sesi dan metrik per pemain.
+3. Fitur untuk memantau performa pembelajaran dan performa misi pada level sesi (agregat) dan per pemain.
 4. Fitur untuk melihat histori keputusan dan transaksi berbasis urutan event.
 5. Fitur filter dan pengelompokan berdasarkan *ruleset*, sesi, dan pemain.
 6. Fitur audit untuk melihat ringkasan aktivitas dan kesalahan validasi event.
 
 ### 6.2 Kebutuhan pemain
 Pemain membutuhkan:
-1. Tampilan performa personal berbasis metrik dan histori keputusan.
+1. Tampilan performa pembelajaran dan performa misi personal berbasis metrik dan histori keputusan.
 2. Tampilan ringkasan progres per sesi permainan.
 3. Tampilan histori transaksi arus kas untuk melihat pola pemasukan dan pengeluaran.
 
@@ -114,15 +114,15 @@ Kriteria uji minimum:
 
 ### 7.3 Pengolahan dan agregasi metrik
 - FR-MTR-01 Sistem menghitung metrik dari log event mentah menjadi indikator terukur.
-- FR-MTR-02 Sistem menghasilkan metrik pada level sesi dan level pemain.
+- FR-MTR-02 Sistem menghasilkan metrik performa pembelajaran dan performa misi pada level sesi dan level pemain.
 - FR-MTR-03 Sistem menghasilkan histori keputusan sebagai jejak event yang dapat ditelusuri.
 - FR-MTR-04 Sistem menyediakan endpoint untuk mengambil hasil metrik berdasarkan filter sesi, pemain, dan ruleset.
 
 ### 7.4 Dasbor analitika (UI MVC)
-- FR-DSH-01 Sistem menampilkan ringkasan metrik sesi pada dasbor.
-- FR-DSH-02 Sistem menampilkan metrik per pemain.
+- FR-DSH-01 Sistem menampilkan ringkasan performa pembelajaran dan performa misi pada level sesi (agregat).
+- FR-DSH-02 Sistem menampilkan performa pembelajaran dan performa misi per pemain.
 - FR-DSH-03 Sistem menampilkan histori transaksi dan histori keputusan berdasarkan event.
-- FR-DSH-04 Sistem menyediakan filter berdasarkan ruleset, sesi, pemain, dan rentang waktu.
+- FR-DSH-04 Sistem menyediakan filter dan pengelompokan berdasarkan ruleset, sesi, pemain, dan rentang waktu.
 - FR-DSH-05 Sistem memperbarui tampilan setelah sistem menerima event pada setiap aksi atau akhir giliran.
 
 ---
