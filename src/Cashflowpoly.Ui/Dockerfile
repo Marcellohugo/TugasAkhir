@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
-COPY Cashflowpoly.sln ./
+COPY Cashflowpoly.slnx ./
 COPY src/Cashflowpoly.Ui/Cashflowpoly.Ui.csproj src/Cashflowpoly.Ui/
 RUN dotnet restore src/Cashflowpoly.Ui/Cashflowpoly.Ui.csproj
 
