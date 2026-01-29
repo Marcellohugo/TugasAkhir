@@ -68,8 +68,9 @@ UI tidak mengakses database secara langsung. UI membaca data dari REST API agar 
 ¦  +- 00_create_schema.sql
 +- docs/
 ¦  +- 00-Panduan/
-¦  ¦  +- 00-01-panduan-setup-lingkungan-dan-menjalankan-sistem.md
+¦  ¦  +- 00-01-panduan-setup-lingkungan.md
 ¦  ¦  +- 00-02-manual-pengguna-dan-skenario-operasional.md
+¦  ¦  +- 00-03-panduan-menjalankan-sistem.md
 ¦  +- 01-Spesifikasi/
 ¦  ¦  +- 01-01-spesifikasi-kebutuhan-sistem.md
 ¦  ¦  +- 01-02-spesifikasi-event-dan-kontrak-api.md
