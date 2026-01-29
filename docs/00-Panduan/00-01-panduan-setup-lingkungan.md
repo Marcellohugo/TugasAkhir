@@ -1,16 +1,16 @@
-﻿# Panduan Setup Lingkungan dan Menjalankan Sistem (Windows 11 + VS Code)  
+﻿# Panduan Setup Lingkungan (Windows 11 + VS Code)
 ## RESTful API + ASP.NET Core MVC (Razor Views) untuk Cashflowpoly
 
 ### Dokumen
-- Nama dokumen: Panduan Setup Lingkungan dan Menjalankan Sistem
+- Nama dokumen: Panduan Setup Lingkungan
 - Versi: 1.0
-- Tanggal: 28 Januari 2026
+- Tanggal: 29 Januari 2026
 - Penyusun: Marco Marcello Hugo
 
 ---
 
 ## 1. Tujuan
-Dokumen ini memandu setup lingkungan pengembangan dan pengujian pada Windows 11 Home, termasuk instalasi perangkat lunak, konfigurasi PostgreSQL, pengaturan *appsettings*, menjalankan skrip skema database dengan DBeaver, menjalankan REST API dan UI MVC, serta langkah troubleshooting yang paling sering terjadi.
+Dokumen ini memandu setup lingkungan pengembangan dan pengujian pada Windows 11 Home, termasuk instalasi perangkat lunak, konfigurasi PostgreSQL, pengaturan *appsettings*, menjalankan skrip skema database dengan DBeaver, serta setup Tailwind untuk UI MVC.
 
 ---
 
@@ -150,90 +150,22 @@ Catatan:
 
 ---
 
-## 9. Menjalankan REST API dan Swagger
-### 9.1 Jalankan API
-Dari folder `src`:
-```bash
-dotnet run --project Cashflowpoly.Api
-```
-
-### 9.2 Akses Swagger
-Buka Chrome:
-- `https://localhost:7041/swagger` (HTTPS)
-- `http://localhost:5041/swagger` (HTTP)
-
-Jika `weatherforecast` bisa dibuka tetapi swagger gagal, penyebab yang paling sering:
-1. middleware swagger belum diaktifkan untuk environment `Development`,
-2. URL salah (http vs https),
-3. port berbeda dari yang kamu buka,
-4. browser blokir sertifikat dev (untuk https).
-
-Sistem menyelesaikan dengan:
-- cek output console API untuk URL listen,
-- pakai URL itu pada Chrome,
-- jika pakai https dan sertifikat ditolak, tekan “Advanced” lalu “Proceed”.
-
----
-
-## 10. Menjalankan UI MVC
-### 10.1 Jalankan Web
-Dari folder `src`:
-```bash
-dotnet run --project Cashflowpoly.Ui
-```
-
-### 10.2 Atur base URL API
-Sistem menaruh base URL API di `Cashflowpoly.Ui/appsettings.Development.json`:
-```json
-{
-  "ApiBaseUrl": "http://localhost:5041"
-}
-```
-
-### 10.3 Uji halaman
-Buka:
-- `https://localhost:7203/sessions` (HTTPS)
-- `http://localhost:5203/sessions` (HTTP)
-
-Jika halaman masih kosong, itu normal jika endpoint `/api/sessions` belum kamu implementasikan.
-
----
-
-## 11. Menjalankan Dua Proyek Sekaligus (VS Code)
-### 11.1 Cara cepat (dua terminal)
-1. Terminal 1:
-```bash
-dotnet run --project src/Cashflowpoly.Api
-```
-2. Terminal 2:
-```bash
-dotnet run --project src/Cashflowpoly.Ui
-```
-
-### 11.2 Cara *debug* dengan `launch.json`
-Sistem bisa membuat `.vscode/launch.json` untuk dua konfigurasi. Kamu dapat menjalankan keduanya melalui “Run and Debug”.
-
-Catatan:
-- Dokumen ini tidak memaksa kamu memakai `launch.json` karena setup tiap mesin berbeda.
-
----
-
-## 12. Setup Tailwind CSS (MVC)
+## 9. Setup Tailwind CSS (MVC)
 Sistem memakai Tailwind CLI (bukan CDN).
 
-### 12.1 Instal dependensi
+### 9.1 Instal dependensi
 Masuk ke proyek UI:
 ```bash
 cd src/Cashflowpoly.Ui
 npm install
 ```
 
-### 12.2 Build CSS Tailwind
+### 9.2 Build CSS Tailwind
 ```bash
 npm run tailwind:build
 ```
 
-### 12.3 Mode watch (opsional)
+### 9.3 Mode watch (opsional)
 Gunakan saat development agar CSS otomatis ter-update:
 ```bash
 npm run tailwind:watch
@@ -241,46 +173,12 @@ npm run tailwind:watch
 
 ---
 
-## 13. Troubleshooting Umum
-### 13.1 PostgreSQL connection error
-Penyebab umum:
-- username/password salah,
-- service PostgreSQL tidak berjalan,
-- port berbeda,
-- firewall.
-
-Langkah cek:
-1. uji login melalui pgAdmin/psql,
-2. uji connection string pada API,
-3. cek log output API.
-
-### 13.2 Swagger tidak bisa dibuka
-Penyebab umum:
-- `app.UseSwagger()` atau `app.UseSwaggerUI()` belum dipanggil,
-- environment bukan Development,
-- port/URL salah.
-
-Solusi:
-- pastikan `Swagger` aktif pada `Development`,
-- cek URL listen pada console,
-- akses `/swagger`.
-
-### 13.3 CORS error saat Web memanggil API
-Jika Web berjalan pada origin berbeda dan memanggil API via browser, kamu bisa:
-- aktifkan CORS pada API untuk origin Web, atau
-- jalankan Web sebagai server-side MVC yang memanggil API dari server (bukan dari JS browser).
-
-Dokumen rancangan UI memakai pendekatan server-side call via `HttpClient`, sehingga CORS biasanya tidak muncul.
-
----
-
-## 14. Checklist Setup Berhasil
+## 10. Checklist Setup Berhasil
 Setup selesai jika:
-1. `dotnet build` sukses untuk solution,
+1. `dotnet --list-sdks` menampilkan .NET 10.x,
 2. skrip `database/00_create_schema.sql` berhasil dan tabel terbentuk,
-3. Swagger UI bisa kamu akses,
-4. endpoint sample bisa kamu panggil,
-5. MVC bisa jalan dan menampilkan halaman.
+3. connection string PostgreSQL sudah benar di `Cashflowpoly.Api/appsettings.Development.json`,
+4. `ApiBaseUrl` sudah sesuai di `Cashflowpoly.Ui/appsettings.Development.json`,
+5. dependensi Tailwind sudah terpasang (npm install) dan build CSS berhasil.
 
-
-
+Untuk menjalankan sistem, lanjutkan ke: `docs/00-Panduan/00-03-panduan-menjalankan-sistem.md`.

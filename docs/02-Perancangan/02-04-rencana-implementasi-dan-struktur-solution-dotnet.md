@@ -52,18 +52,23 @@ cashflowpoly-analytics-platform/
   README.md
   database/
   docs/
-    00-01-panduan-setup-lingkungan-dan-menjalankan-sistem.md
-    00-02-manual-pengguna-dan-skenario-operasional.md
-    01-01-spesifikasi-kebutuhan-sistem.md
-    01-02-spesifikasi-event-dan-kontrak-api.md
-    01-03-spesifikasi-ruleset-dan-validasi.md
-    02-01-rancangan-model-data-dan-basis-data.md
-    02-02-definisi-metrik-dan-agregasi.md
-    02-03-rancangan-dashboard-analitika-mvc.md
-    02-04-rencana-implementasi-dan-struktur-solution-dotnet.md
-    02-05-spesifikasi-ui-mvc-dan-rancangan-viewmodel.md
-    03-01-rencana-pengujian-fungsional-dan-validasi.md
-    03-02-laporan-hasil-pengujian.md
+    00-Panduan/
+      00-01-panduan-setup-lingkungan.md
+      00-02-manual-pengguna-dan-skenario-operasional.md
+      00-03-panduan-menjalankan-sistem.md
+    01-Spesifikasi/
+      01-01-spesifikasi-kebutuhan-sistem.md
+      01-02-spesifikasi-event-dan-kontrak-api.md
+      01-03-spesifikasi-ruleset-dan-validasi.md
+    02-Perancangan/
+      02-01-rancangan-model-data-dan-basis-data.md
+      02-02-definisi-metrik-dan-agregasi.md
+      02-03-rancangan-dashboard-analitika-mvc.md
+      02-04-rencana-implementasi-dan-struktur-solution-dotnet.md
+      02-05-spesifikasi-ui-mvc-dan-rancangan-viewmodel.md
+    03-Pengujian/
+      03-01-rencana-pengujian-fungsional-dan-validasi.md
+      03-02-laporan-hasil-pengujian.md
   src/
     Cashflowpoly.Api/
     Cashflowpoly.Ui/
