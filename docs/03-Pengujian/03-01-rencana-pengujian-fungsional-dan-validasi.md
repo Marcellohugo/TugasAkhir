@@ -10,7 +10,7 @@
 ---
 
 ## 1. Tujuan
-Dokumen ini menetapkan skenario uji fungsional (*black-box*), uji integrasi alur event, serta validasi konsistensi tampilan dasbor terhadap data basis data. Dokumen ini juga menetapkan format pencatatan hasil uji dan kriteria kelulusan.
+Dokumen ini saya susun untuk menetapkan skenario uji fungsional (*black-box*), uji integrasi alur event, serta validasi konsistensi tampilan dasbor terhadap data basis data. Dokumen ini juga saya susun untuk menetapkan format pencatatan hasil uji dan kriteria kelulusan.
 
 ---
 
@@ -449,3 +449,5 @@ Sistem lulus tahap pengujian dan validasi jika:
 2. sistem menyelesaikan IT-01 s.d. IT-03 dengan PASS,
 3. sistem menyelesaikan UI-01 s.d. UI-03 dengan PASS,
 4. sistem tidak meninggalkan temuan berstatus OPEN pada modul inti (M1–M6).
+
+

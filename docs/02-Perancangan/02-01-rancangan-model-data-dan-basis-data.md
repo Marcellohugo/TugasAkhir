@@ -10,13 +10,13 @@
 ---
 
 ## 1. Tujuan Dokumen
-Dokumen ini mendefinisikan model data dan rancangan skema PostgreSQL untuk:
+Dokumen ini saya susun untuk mendefinisikan model data dan rancangan skema PostgreSQL untuk:
 1. menyimpan *ruleset* beserta versinya,
 2. menyimpan sesi dan pemain,
 3. menyimpan event terurut sebagai sumber histori,
 4. menyajikan data proyeksi dan agregasi metrik untuk dasbor.
 
-Dokumen ini menjadi acuan implementasi skema PostgreSQL berbasis skrip SQL (tanpa ORM) dan acuan pembuatan indeks untuk kinerja query analitika.
+Dokumen ini saya jadikan acuan implementasi skema PostgreSQL berbasis skrip SQL (tanpa ORM) dan acuan pembuatan indeks untuk kinerja query analitika.
 
 ---
 
@@ -461,3 +461,5 @@ Sistem siap masuk implementasi basis data jika:
 2. indeks utama terbentuk (`events`, `metric_snapshots`, `event_cashflow_projections`),
 3. constraint idempotensi dan urutan event aktif,
 4. skrip SQL menghasilkan struktur identik dengan dokumen ini.
+
+

@@ -10,9 +10,9 @@
 ---
 
 ## 1. Tujuan
-Dokumen ini menyajikan rekap hasil uji fungsional (*black-box*), uji integrasi alur event, dan validasi UI dasbor. Dokumen ini juga merangkum temuan (*bug*), modul yang paling sering bermasalah, dan status perbaikannya.
+Dokumen ini saya susun untuk menyajikan rekap hasil uji fungsional (*black-box*), uji integrasi alur event, dan validasi UI dasbor. Dokumen ini juga saya susun untuk merangkum temuan (*bug*), modul yang paling sering bermasalah, dan status perbaikannya.
 
-Dokumen ini kamu isi setelah menjalankan rencana uji pada dokumen 01.
+Dokumen ini diisi setelah menjalankan rencana uji pada dokumen 01.
 
 ---
 
@@ -82,7 +82,7 @@ Catatan:
 |---|---|---|---|---|---|---|
 
 ### 6.2 Kolom “Modul Dominan”
-Kolom “Modul Dominan” kamu isi dengan modul yang paling berpengaruh pada hasil uji itu. Contoh:
+Kolom “Modul Dominan” diisi dengan modul yang paling berpengaruh pada hasil uji itu. Contoh:
 - IT-01 gagal karena snapshot kosong → M5
 - IT-02 gagal karena ruleset tidak memblokir event → M2/M3
 
@@ -93,7 +93,7 @@ Kolom “Modul Dominan” kamu isi dengan modul yang paling berpengaruh pada has
 | Tanggal | ID Uji | Halaman | Data UI | Query DB | Status | Bukti | Catatan |
 |---|---|---|---|---|---|---|---|
 
-Contoh query DB yang kamu pakai:
+Contoh query DB yang dipakai:
 ```sql
 select metric_name, metric_value_numeric
 from metric_snapshots
@@ -181,7 +181,7 @@ Sistem mencatat status akhir:
   1. ...
 
 Catatan:
-- Kamu mengisi bagian ini setelah semua uji pada dokumen 07 selesai.
+- Bagian ini diisi setelah semua uji pada dokumen 07 selesai.
 
 ---
 
@@ -201,4 +201,6 @@ Daftar lampiran:
 - SS-UI-01.png: detail sesi
 - DB-01.sql: query metric_snapshots
 - (isi sesuai bukti nyata)
+
+
 

@@ -10,7 +10,7 @@
 ---
 
 ## 1. Tujuan
-Dokumen ini menetapkan:
+Dokumen ini saya susun untuk menetapkan:
 1. struktur halaman UI MVC yang sistem bangun,
 2. *ViewModel* per halaman,
 3. struktur folder `Views/` dan *partial view*,
@@ -35,7 +35,7 @@ UI menerima DTO dari API, lalu memetakan ke *ViewModel* yang khusus untuk tampil
 UI melakukan format:
 - integer koin dengan pemisah ribuan,
 - rasio sebagai persentase 0–100,
-- waktu sebagai `dd/MM/yyyy HH:mm` atau format yang kamu pakai pada laporan.
+- waktu sebagai `dd/MM/yyyy HH:mm` atau format yang dipakai pada laporan.
 
 ---
 
@@ -363,7 +363,7 @@ Wajib:
 
 ### 9.3 `_Table.cshtml`
 Opsional:
-- dipakai jika kamu ingin satu komponen tabel generik
+- dipakai jika ingin satu komponen tabel generik
 
 ---
 
@@ -376,7 +376,7 @@ Sistem memakai pedoman berikut:
 - tombol sekunder: `px-3 py-2 rounded-md border`
 
 Catatan:
-- Kamu boleh mengubah kelas sesuai preferensi, tapi sistem menjaga konsistensi antar halaman.
+- Perubahan kelas sesuai preferensi diperbolehkan, tetapi konsistensi antar halaman tetap dijaga.
 
 ---
 
@@ -397,3 +397,5 @@ UI siap uji jika:
 3. UI menampilkan *loading* atau minimal *empty state*,
 4. UI menampilkan error terstruktur,
 5. nilai UI sama dengan data API.
+
+

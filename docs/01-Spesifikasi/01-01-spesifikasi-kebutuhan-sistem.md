@@ -221,3 +221,5 @@ Sistem dinyatakan siap masuk tahap perancangan apabila:
 5. Setiap aturan domain yang berdampak pada validasi memiliki aturan validasi yang tertulis.
 
 ---
+
+

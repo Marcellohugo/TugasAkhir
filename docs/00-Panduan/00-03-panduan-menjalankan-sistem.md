@@ -1,4 +1,4 @@
-﻿# Panduan Menjalankan Sistem (Windows 11 + VS Code)
+# Panduan Menjalankan Sistem (Windows 11 + VS Code)
 ## RESTful API + ASP.NET Core MVC (Razor Views) untuk Cashflowpoly
 
 ### Dokumen
@@ -10,7 +10,7 @@
 ---
 
 ## 1. Tujuan
-Dokumen ini memandu cara menjalankan REST API dan UI MVC, mengakses Swagger UI, menjalankan dua proyek sekaligus, serta langkah troubleshooting yang paling sering terjadi.
+Dokumen ini saya susun untuk memandu cara menjalankan REST API dan UI MVC, mengakses Swagger UI, menjalankan dua proyek sekaligus, serta langkah troubleshooting yang paling sering terjadi.
 
 ---
 
@@ -39,7 +39,7 @@ Buka Chrome:
 Jika `weatherforecast` bisa dibuka tetapi swagger gagal, penyebab yang paling sering:
 1. middleware swagger belum diaktifkan untuk environment `Development`,
 2. URL salah (http vs https),
-3. port berbeda dari yang kamu buka,
+3. port berbeda dari yang dibuka,
 4. browser blokir sertifikat dev (untuk https).
 
 Sistem menyelesaikan dengan:
@@ -69,7 +69,7 @@ Buka:
 - `https://localhost:7203/sessions` (HTTPS)
 - `http://localhost:5203/sessions` (HTTP)
 
-Jika halaman masih kosong, itu normal jika endpoint `/api/sessions` belum kamu implementasikan.
+Jika halaman masih kosong, itu normal jika endpoint `/api/sessions` belum diimplementasikan.
 
 Catatan:
 - Jika styling belum muncul, pastikan Tailwind sudah dibuild sesuai panduan setup.
@@ -88,10 +88,10 @@ dotnet run --project src/Cashflowpoly.Ui
 ```
 
 ### 5.2 Cara *debug* dengan `launch.json`
-Sistem bisa membuat `.vscode/launch.json` untuk dua konfigurasi. Kamu dapat menjalankan keduanya melalui "Run and Debug".
+Sistem bisa membuat `.vscode/launch.json` untuk dua konfigurasi. Keduanya dapat dijalankan keduanya melalui "Run and Debug".
 
 Catatan:
-- Dokumen ini tidak memaksa kamu memakai `launch.json` karena setup tiap mesin berbeda.
+- Dokumen ini tidak mewajibkan penggunaan `launch.json` karena setup tiap mesin berbeda.
 
 ---
 
@@ -120,7 +120,7 @@ Solusi:
 - akses `/swagger`.
 
 ### 6.3 CORS error saat Web memanggil API
-Jika Web berjalan pada origin berbeda dan memanggil API via browser, kamu bisa:
+Jika Web berjalan pada origin berbeda dan memanggil API via browser, dapat dilakukan:
 - aktifkan CORS pada API untuk origin Web, atau
 - jalankan Web sebagai server-side MVC yang memanggil API dari server (bukan dari JS browser).
 
@@ -131,6 +131,8 @@ Dokumen rancangan UI memakai pendekatan server-side call via `HttpClient`, sehin
 ## 7. Checklist Menjalankan Sistem
 Sistem berjalan baik jika:
 1. `dotnet build` sukses untuk solution,
-2. Swagger UI bisa kamu akses,
-3. endpoint sample bisa kamu panggil,
+2. Swagger UI dapat diakses,
+3. endpoint sample dapat dipanggil,
 4. MVC bisa jalan dan menampilkan halaman.
+
+

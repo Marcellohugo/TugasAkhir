@@ -10,7 +10,7 @@
 ---
 
 ## 1. Tujuan Dokumen
-Dokumen ini menetapkan spesifikasi event sebagai format data utama pencatatan permainan serta menetapkan kontrak REST API untuk menerima, memvalidasi, menyimpan, dan menyediakan data analitika serta manajemen ruleset. Dokumen ini menjadi acuan implementasi back-end dan acuan integrasi UI MVC serta pengujian fungsional.
+Dokumen ini saya susun untuk menetapkan spesifikasi event sebagai format data utama pencatatan permainan serta menetapkan kontrak REST API untuk menerima, memvalidasi, menyimpan, dan menyediakan data analitika serta manajemen ruleset. Dokumen ini saya jadikan acuan implementasi back-end dan acuan integrasi UI MVC serta pengujian fungsional.
 
 ---
 
@@ -600,3 +600,5 @@ Dokumen ini konsisten jika:
 2. Setiap endpoint memiliki request/response dan status code.
 3. Setiap validasi domain dapat ditelusuri ke aturan ruleset atau aturan permainan.
 4. Setiap endpoint yang dipakai UI memiliki kebutuhan data yang tersedia.
+
+

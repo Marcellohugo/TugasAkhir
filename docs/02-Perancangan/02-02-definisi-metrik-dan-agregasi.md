@@ -10,7 +10,7 @@
 ---
 
 ## 1. Tujuan Dokumen
-Dokumen ini mendefinisikan metrik yang sistem hitung dari log event, beserta aturan agregasi, frekuensi perhitungan, dan format penyimpanan pada tabel `metric_snapshots`. Dokumen ini menjadi acuan implementasi modul analitika dan validasi tampilan dasbor.
+Dokumen ini saya susun untuk mendefinisikan metrik yang sistem hitung dari log event, beserta aturan agregasi, frekuensi perhitungan, dan format penyimpanan pada tabel `metric_snapshots`. Dokumen ini saya jadikan acuan implementasi modul analitika dan validasi tampilan dasbor.
 
 ---
 
@@ -310,3 +310,5 @@ Sistem lulus uji metrik jika:
 2. Sistem tidak menghasilkan nilai negatif untuk metrik kepemilikan (emas, bahan).
 3. Sistem memperbarui snapshot setelah sistem menerima event yang relevan.
 4. Sistem menampilkan nilai pada dasbor yang cocok dengan isi `metric_snapshots`.
+
+

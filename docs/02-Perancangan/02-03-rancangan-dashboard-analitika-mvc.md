@@ -10,7 +10,7 @@
 ---
 
 ## 1. Tujuan Dokumen
-Dokumen ini mendefinisikan rancangan antarmuka *dashboard* analitika berbasis ASP.NET Core MVC (Razor Views) yang menampilkan metrik, histori transaksi, dan ringkasan sesi. Dokumen ini juga menetapkan pemetaan data UI ke kontrak REST API agar implementasi UI konsisten dengan data pada basis data.
+Dokumen ini saya susun untuk mendefinisikan rancangan antarmuka *dashboard* analitika berbasis ASP.NET Core MVC (Razor Views) yang menampilkan metrik, histori transaksi, dan ringkasan sesi. Dokumen ini juga saya susun untuk menetapkan pemetaan data UI ke kontrak REST API agar implementasi UI konsisten dengan data pada basis data.
 
 ---
 
@@ -103,7 +103,7 @@ UI membantu instruktur memilih sesi aktif dan melihat status terbaru.
    - “Aktifkan *ruleset*” menuju `/sessions/{sessionId}/ruleset`.
 
 ### Sumber data
-- `GET /api/sessions` (endpoint ini dapat kamu tambah bila belum ada).
+- `GET /api/sessions` (endpoint ini dapat ditambahkan bila belum ada).
 
 ### *Empty state*
 UI menampilkan pesan “Belum ada sesi” dan tombol “Buat Sesi” bila daftar kosong.
@@ -210,7 +210,7 @@ Sistem memakai pemetaan berikut agar integrasi jelas.
 | Audit event | `GET /api/sessions/{sessionId}/events?fromSeq=...` | opsional | daftar event |
 
 Catatan:
-- Jika API belum menyediakan `GET /api/sessions`, kamu bisa membuat endpoint ini lebih dulu karena UI membutuhkannya.
+- Jika API belum menyediakan `GET /api/sessions`, endpoint ini dapat dibuat lebih dulu karena UI membutuhkannya.
 
 ---
 
@@ -247,7 +247,7 @@ Field:
 3. UI memuat tren hanya saat pengguna membuka tab tren.
 
 ### 9.2 Detail pemain
-1. UI memanggil `GET /api/analytics/sessions/{sessionId}` atau endpoint detail pemain (jika kamu buat).
+1. UI memanggil `GET /api/analytics/sessions/{sessionId}` atau endpoint detail pemain (jika dibuat).
 2. UI memanggil `GET /api/analytics/sessions/{sessionId}/transactions?playerId=...` untuk tabel transaksi.
 3. UI menampilkan *loading state* saat memuat tabel transaksi.
 
@@ -289,9 +289,11 @@ Sistem menyimpan konfigurasi base URL API pada `appsettings.json`.
 ---
 
 ## 13. Checklist Kesiapan Implementasi UI
-UI siap kamu implementasikan jika:
+UI siap diimplementasikan jika:
 1. endpoint daftar sesi tersedia,
 2. endpoint analitika sesi menghasilkan ringkasan dan daftar pemain,
 3. endpoint histori transaksi berjalan,
 4. UI menampilkan data tanpa menghitung ulang metrik di sisi klien,
 5. UI menampilkan error sesuai format standar API.
+
+

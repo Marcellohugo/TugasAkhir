@@ -10,7 +10,7 @@
 ---
 
 ## 1. Tujuan Dokumen
-Dokumen ini menetapkan struktur data *ruleset*, daftar parameter konfigurasi, aturan validasi, dan kebijakan versi. Dokumen ini memandu implementasi modul manajemen *ruleset* di REST API dan UI MVC.
+Dokumen ini saya susun untuk menetapkan struktur data *ruleset*, daftar parameter konfigurasi, aturan validasi, dan kebijakan versi. Dokumen ini saya susun untuk memandu implementasi modul manajemen *ruleset* di REST API dan UI MVC.
 
 ---
 
@@ -111,7 +111,7 @@ Catatan:
 ---
 
 ## 5. Daftar Parameter *Ruleset*
-Tabel berikut merangkum parameter utama. Kamu boleh menambah parameter lain selama kamu menuliskan aturan validasi dan dampaknya ke event.
+Tabel berikut merangkum parameter utama. Penambahan parameter lain diperbolehkan selama aturan validasi dan dampaknya ke event dituliskan.
 
 ### 5.1 Parameter umum
 | Parameter | Tipe | Wajib | Default | Rentang | Deskripsi |
@@ -290,4 +290,6 @@ Sistem siap masuk tahap implementasi modul manajemen *ruleset* jika:
 3. Sistem menyimpan versi baru saat instruktur mengubah konfigurasi.
 4. Sistem mengunci versi aktif pada sesi.
 5. Sistem menolak event dengan `ruleset_version_id` yang tidak cocok.
+
+
 

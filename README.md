@@ -1,4 +1,4 @@
-ï»¿# Cashflowpoly Dashboard & Manajemen *Ruleset*
+# Cashflowpoly Dashboard & Manajemen *Ruleset*
 
 Repositori ini memuat sistem informasi yang merekam aktivitas gim papan Cashflowpoly sebagai rangkaian *event*, memvalidasi data masuk, menyimpan data secara konsisten di PostgreSQL, lalu mengolahnya menjadi metrik literasi finansial dan capaian misi yang tampil pada dasbor web. Sistem juga menyediakan modul manajemen *ruleset* berbasis konfigurasi dinamis agar instruktur mengubah parameter permainan tanpa mengubah kode.
 
@@ -65,25 +65,25 @@ UI tidak mengakses database secara langsung. UI membaca data dari REST API agar 
 +- README.md
 +- docker-compose.yml
 +- database/
-Â¦  +- 00_create_schema.sql
+¦  +- 00_create_schema.sql
 +- docs/
-Â¦  +- 00-Panduan/
-Â¦  Â¦  +- 00-01-panduan-setup-lingkungan.md
-Â¦  Â¦  +- 00-02-manual-pengguna-dan-skenario-operasional.md
-Â¦  Â¦  +- 00-03-panduan-menjalankan-sistem.md
-Â¦  +- 01-Spesifikasi/
-Â¦  Â¦  +- 01-01-spesifikasi-kebutuhan-sistem.md
-Â¦  Â¦  +- 01-02-spesifikasi-event-dan-kontrak-api.md
-Â¦  Â¦  +- 01-03-spesifikasi-ruleset-dan-validasi.md
-Â¦  +- 02-Perancangan/
-Â¦  Â¦  +- 02-01-rancangan-model-data-dan-basis-data.md
-Â¦  Â¦  +- 02-02-definisi-metrik-dan-agregasi.md
-Â¦  Â¦  +- 02-03-rancangan-dashboard-analitika-mvc.md
-Â¦  Â¦  +- 02-04-rencana-implementasi-dan-struktur-solution-dotnet.md
-Â¦  Â¦  +- 02-05-spesifikasi-ui-mvc-dan-rancangan-viewmodel.md
-Â¦  +- 03-Pengujian/
-Â¦  Â¦  +- 03-01-rencana-pengujian-fungsional-dan-validasi.md
-Â¦  Â¦  +- 03-02-laporan-hasil-pengujian.md
+¦  +- 00-Panduan/
+¦  ¦  +- 00-01-panduan-setup-lingkungan.md
+¦  ¦  +- 00-02-manual-pengguna-dan-skenario-operasional.md
+¦  ¦  +- 00-03-panduan-menjalankan-sistem.md
+¦  +- 01-Spesifikasi/
+¦  ¦  +- 01-01-spesifikasi-kebutuhan-sistem.md
+¦  ¦  +- 01-02-spesifikasi-event-dan-kontrak-api.md
+¦  ¦  +- 01-03-spesifikasi-ruleset-dan-validasi.md
+¦  +- 02-Perancangan/
+¦  ¦  +- 02-01-rancangan-model-data-dan-basis-data.md
+¦  ¦  +- 02-02-definisi-metrik-dan-agregasi.md
+¦  ¦  +- 02-03-rancangan-dashboard-analitika-mvc.md
+¦  ¦  +- 02-04-rencana-implementasi-dan-struktur-solution-dotnet.md
+¦  ¦  +- 02-05-spesifikasi-ui-mvc-dan-rancangan-viewmodel.md
+¦  +- 03-Pengujian/
+¦  ¦  +- 03-01-rencana-pengujian-fungsional-dan-validasi.md
+¦  ¦  +- 03-02-laporan-hasil-pengujian.md
 +- src/
    +- Cashflowpoly.Api/
    +- Cashflowpoly.Ui/
@@ -120,7 +120,7 @@ DBeaver menampilkan tabel pada schema `public` setelah PostgreSQL menjalankan `d
 docker compose down
 ```
 
-Jika kamu ingin menghapus data database:
+Jika perlu menghapus data database:
 ```bash
 docker compose down -v
 ```
@@ -149,7 +149,7 @@ dotnet run --project src/Cashflowpoly.Ui
 ```
 
 ## Catatan pengembangan
-- Hapus *template endpoint* `GET /weatherforecast` setelah kamu menyiapkan *controller* sesuai kontrak API pada dokumen spesifikasi.
+- Hapus *template endpoint* `GET /weatherforecast` setelah menyiapkan *controller* sesuai kontrak API pada dokumen spesifikasi.
 - Gunakan Swagger untuk uji cepat *endpoint* dan gunakan Postman untuk skenario uji *black-box* yang terdokumentasi.
 
 ## Dokumen desain dan spesifikasi
@@ -172,5 +172,5 @@ Dokumen kunci:
 - Smoke test cepat (butuh API berjalan): `powershell -File scripts/smoke.ps1`.
 
 ## Lisensi
-Tentukan lisensi yang kamu pakai untuk repositori ini.
+Tentukan lisensi yang digunakan untuk repositori ini.
 

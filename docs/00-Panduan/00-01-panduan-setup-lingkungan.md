@@ -1,4 +1,4 @@
-﻿# Panduan Setup Lingkungan (Windows 11 + VS Code)
+# Panduan Setup Lingkungan (Windows 11 + VS Code)
 ## RESTful API + ASP.NET Core MVC (Razor Views) untuk Cashflowpoly
 
 ### Dokumen
@@ -10,7 +10,7 @@
 ---
 
 ## 1. Tujuan
-Dokumen ini memandu setup lingkungan pengembangan dan pengujian pada Windows 11 Home, termasuk instalasi perangkat lunak, konfigurasi PostgreSQL, pengaturan *appsettings*, menjalankan skrip skema database dengan DBeaver, serta setup Tailwind untuk UI MVC.
+Dokumen ini saya susun untuk memandu setup lingkungan pengembangan dan pengujian pada Windows 11 Home, termasuk instalasi perangkat lunak, konfigurasi PostgreSQL, pengaturan *appsettings*, menjalankan skrip skema database dengan DBeaver, serta setup Tailwind untuk UI MVC.
 
 ---
 
@@ -68,7 +68,7 @@ create extension if not exists "pgcrypto";
 ```
 
 Catatan:
-- Extension membantu jika kamu memakai `gen_random_uuid()` pada DB.
+- Extension membantu jika menggunakan `gen_random_uuid()` pada DB.
 
 ---
 
@@ -129,7 +129,7 @@ Contoh `src/Cashflowpoly.Api/appsettings.Development.json`:
 }
 ```
 
-Jika kamu menjalankan API pada port tertentu, kamu dapat mengunci URL pada `Properties/launchSettings.json`.
+Jika API dijalankan pada port tertentu, URL dapat dikunci pada `Properties/launchSettings.json`.
 
 ---
 
@@ -182,3 +182,5 @@ Setup selesai jika:
 5. dependensi Tailwind sudah terpasang (npm install) dan build CSS berhasil.
 
 Untuk menjalankan sistem, lanjutkan ke: `docs/00-Panduan/00-03-panduan-menjalankan-sistem.md`.
+
+

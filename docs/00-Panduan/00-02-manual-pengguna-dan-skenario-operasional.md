@@ -279,3 +279,5 @@ Instruktur menjalankan urutan ini pada setiap sesi:
 7. akhiri sesi,
 8. simpan bukti uji dan tampilan.
 
+
+
